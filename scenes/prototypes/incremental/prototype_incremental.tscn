@@ -4,8 +4,9 @@
 [ext_resource type="StyleBox" uid="uid://bhxwenlp7csdo" path="res://styleboxes/main_panel_style_box.tres" id="2_8egtp"]
 [ext_resource type="StyleBox" uid="uid://ca88aar5e471j" path="res://styleboxes/resources_panel_style_box.tres" id="2_loabp"]
 [ext_resource type="Texture2D" uid="uid://b4kcth4xxm2p5" path="res://sprites/regolith.png" id="2_wswhu"]
+[ext_resource type="Texture2D" uid="uid://cmqoxuvh3d4kw" path="res://sprites/ice.png" id="5_8egtp"]
 
-[node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithLabel", "regolithChangeLabel", "timer", "clock")]
+[node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithLabel", "regolithChangeLabel", "iceLabel", "iceChangeLabel", "timer", "clock")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,8 @@ grow_vertical = 2
 script = ExtResource("1_ni4m6")
 regolithLabel = NodePath("ResourcesPanel/ResourcesContainer/RegolithContainer/Regolith/RegolithLabel")
 regolithChangeLabel = NodePath("ResourcesPanel/ResourcesContainer/RegolithContainer/RegolithChangeLabel")
+iceLabel = NodePath("ResourcesPanel/ResourcesContainer/IceContainer/Ice/IceLabel")
+iceChangeLabel = NodePath("ResourcesPanel/ResourcesContainer/IceContainer/IceChangeLabel")
 timer = NodePath("Timer")
 clock = NodePath("TimePanel/TimeDisplay")
 
@@ -128,6 +131,43 @@ text = "+0 / hr"
 horizontal_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="ResourcesPanel/ResourcesContainer" unique_id=87065047]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="IceContainer" type="VBoxContainer" parent="ResourcesPanel/ResourcesContainer" unique_id=214611968]
+custom_minimum_size = Vector2(175, 0)
+custom_maximum_size = Vector2(175, -1)
+layout_mode = 2
+
+[node name="Ice" type="HBoxContainer" parent="ResourcesPanel/ResourcesContainer/IceContainer" unique_id=53891972]
+layout_mode = 2
+
+[node name="IceIcon" type="TextureRect" parent="ResourcesPanel/ResourcesContainer/IceContainer/Ice" unique_id=2011835074]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_8egtp")
+expand_mode = 2
+
+[node name="IceLabel" type="Label" parent="ResourcesPanel/ResourcesContainer/IceContainer/Ice" unique_id=669594275]
+custom_minimum_size = Vector2(147, 0)
+custom_maximum_size = Vector2(147, -1)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+text = "999999.99 Kg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IceChangeLabel" type="Label" parent="ResourcesPanel/ResourcesContainer/IceContainer" unique_id=1338439921]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+text = "+0 / hr"
+horizontal_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="ResourcesPanel/ResourcesContainer" unique_id=1354869773]
 custom_minimum_size = Vector2(0, 50)
 custom_maximum_size = Vector2(-1, 50)
 layout_mode = 2
