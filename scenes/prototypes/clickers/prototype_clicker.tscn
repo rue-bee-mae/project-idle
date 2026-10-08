@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://baln1xnjmax4f"]
+
+[ext_resource type="Script" uid="uid://bchayjfmbyg1s" path="res://scenes/prototypes/clickers/prototype_clicker.gd" id="1_vo1as"]
+
+[node name="PrototypeClicker" type="Control" unique_id=2098043008 node_paths=PackedStringArray("moonRockLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vo1as")
+moonRockLabel = NodePath("MoonRockLabel")
+
+[node name="MoonRockLabel" type="Label" parent="." unique_id=1974616181]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_type_variation = &"HeaderLarge"
+text = "Moon Rock - 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoonRock" type="Button" parent="." unique_id=1621623948]
+custom_minimum_size = Vector2(320, 80)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mine Moon Rock"
+
+[connection signal="pressed" from="MoonRock" to="." method="_on_moon_rock_pressed"]
