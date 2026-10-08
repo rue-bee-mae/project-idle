@@ -10,7 +10,7 @@ You're being placed in near the south pole of Luna in an area with year round su
 
 ### Time
 
-In-game days are tied to Earth time, meaning 24 hours per day. Each in-game day will take 6 minutes, with buildings producing at different rates. Each hour (15 seconds), each building will produce a set amount of their resource.
+In-game days are tied to Earth time, meaning 24 hours per day. Each in-game day will take 10 minutes, with buildings producing at different rates. Each hour (25 seconds), each building will produce a set amount of their resource.
 
 ### Power
 
