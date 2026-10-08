@@ -22,7 +22,7 @@ func create_moon_rock() -> void:
 
 ## Update the label to reflect new amount of moon rocks.
 func update_label() -> void:
-	moonRockLabel.text = "Moon Rock - %s" %int_moonRock
+	moonRockLabel.text = "Regolith - %s Kg" %int_moonRock
 
 ## Triggered when the moon rock button is pressed.
 func _on_moon_rock_pressed() -> void:
