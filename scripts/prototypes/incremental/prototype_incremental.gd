@@ -4,16 +4,25 @@ extends Control
 
 ## Reference to the label displaying the current amount of regolith.
 @export var regolithLabel : Label
+## Reference to the label displaying the current regolith usage/gain.
+@export var regolithChangeLabel : Label
 ## Reference to the main hour tick timer.
 @export var timer : Timer
 ## Reference to the in-game time
 @export var clock : Label
-## The current amount of regolith in kilograms.
+
+## Extractor base speed per game tick
+@export var extractorSpeed : float = 12.5
+## Number of extractors on regolith
+@export var extractorsReg : int = 1
+## Number of extractors on ice
+@export var extractorsIce : int = 3
+
+## Amount of regolith in kilograms
 @export var regolith : float = 0
-## The base amount of regolith to mine per game tick before any multipliers.
-@export var regolithBase : float = 12.5
-## The multipler amount mining regolith.
-@export var regolithMult : float = 1
+## Amount of regolith being used per game tick
+@export var regolithUsage : float = 0
+
 ## Clock hours
 var clockHrs : int = 0
 ## Clock minutes
@@ -25,16 +34,23 @@ var clockTickRate : int = 1
 
 ## Init regolith label at launch.
 func _ready() -> void:
-	update_label()
+	update_labels()
 
 ## Create an amount of regolith based on base and multipler amounts.
 func mine_regolith() -> void:
-	regolith += regolithBase * regolithMult
-	update_label()
+	regolith += extractorsReg * extractorSpeed
+	update_labels()
 
 ## Update the label to reflect new amount of regolith.
-func update_label() -> void:
+func update_labels() -> void:
 	regolithLabel.text = "%.2f Kg" %regolith
+	
+	var regolithChange : float = extractorsReg * extractorSpeed - regolithUsage
+	# Check regolith usage
+	if regolithChange < 0:
+		regolithChangeLabel.text = "-%.2f / hr" %(regolithChange * 4)
+	else:
+		regolithChangeLabel.text = "+%.2f / hr" %(regolithChange * 4)
 
 ## Update the time display to show the curreny day and time.
 func update_time_display() -> void:
