@@ -15,7 +15,7 @@ extends Control
 ## The multipler amount mining regolith.
 @export var flt_regolithMult : float = 1
 ## Clock hours
-var int_clockHrs : int = 8
+var int_clockHrs : int = 0
 ## Clock minutes
 var int_clockMin : int = 0
 ## Clock days
@@ -34,7 +34,7 @@ func create_moon_rock() -> void:
 
 ## Update the label to reflect new amount of moon rocks.
 func update_label() -> void:
-	moonRockLabel.text = "Regolith - %.2f Kg" %flt_regolith
+	moonRockLabel.text = "%.2f Kg" %flt_regolith
 
 func update_time_display() -> void:
 	clock.text = "Day: %d | %02d:%02d" %[int_clockDay, int_clockHrs, int_clockMin]
