@@ -1,24 +1,8 @@
 [gd_scene format=3 uid="uid://baln1xnjmax4f"]
 
 [ext_resource type="Script" uid="uid://bchayjfmbyg1s" path="res://scripts/prototypes/incremental/prototype_incremental.gd" id="1_ni4m6"]
+[ext_resource type="StyleBox" uid="uid://ca88aar5e471j" path="res://styleboxes/resources_panel_style_box.tres" id="2_loabp"]
 [ext_resource type="Texture2D" uid="uid://b4kcth4xxm2p5" path="res://sprites/regolith.png" id="2_wswhu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgk16"]
-content_margin_left = 15.0
-content_margin_top = 15.0
-content_margin_right = 15.0
-content_margin_bottom = 15.0
-bg_color = Color(0.21950099, 0.21950105, 0.21950087, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-corner_detail = 5
 
 [node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithLabel", "timer", "clock")]
 layout_mode = 3
@@ -28,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ni4m6")
-regolithLabel = NodePath("MaterialsPane/VBoxContainer/MaterialsPanel/RegolithLabel")
+regolithLabel = NodePath("PanelContainer/HBoxContainer/RegolithLabel")
 timer = NodePath("Timer")
 clock = NodePath("TimePane/TimeDisplay")
 
@@ -36,49 +20,39 @@ clock = NodePath("TimePane/TimeDisplay")
 wait_time = 0.417
 autostart = true
 
-[node name="MaterialsPane" type="PanelContainer" parent="." unique_id=1374678233]
-custom_minimum_size = Vector2(0, 260)
+[node name="MachinesPane" type="PanelContainer" parent="." unique_id=1374678233]
+custom_minimum_size = Vector2(260, 0)
+custom_maximum_size = Vector2(260, -1)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 200.0
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_wgk16")
+theme_override_styles/panel = ExtResource("2_loabp")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MaterialsPane" unique_id=1747169966]
+[node name="VBoxContainer" type="VBoxContainer" parent="MachinesPane" unique_id=1747169966]
+propagate_maximum_size = false
 layout_mode = 2
 
-[node name="MaterialsLabel" type="Label" parent="MaterialsPane/VBoxContainer" unique_id=1354157396]
+[node name="MachinesLabel" type="Label" parent="MachinesPane/VBoxContainer" unique_id=1354157396]
 layout_mode = 2
 size_flags_vertical = 0
 theme_type_variation = &"HeaderLarge"
-text = "MATERIALS"
+text = "MACHINES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="MaterialsPane/VBoxContainer" unique_id=315074103]
+[node name="HSeparator" type="HSeparator" parent="MachinesPane/VBoxContainer" unique_id=315074103]
+custom_minimum_size = Vector2(240, 0)
+custom_maximum_size = Vector2(240, -1)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="MaterialsPanel" type="GridContainer" parent="MaterialsPane/VBoxContainer" unique_id=625507880]
+[node name="MachinesPanel" type="GridContainer" parent="MachinesPane/VBoxContainer" unique_id=625507880]
 custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 columns = 2
-
-[node name="RegolithIcon" type="TextureRect" parent="MaterialsPane/VBoxContainer/MaterialsPanel" unique_id=556474031]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("2_wswhu")
-expand_mode = 2
-
-[node name="RegolithLabel" type="Label" parent="MaterialsPane/VBoxContainer/MaterialsPanel" unique_id=1974616181]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_type_variation = &"HeaderLarge"
-text = "9999.99 Kg"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TimePane" type="PanelContainer" parent="." unique_id=752283839]
 custom_minimum_size = Vector2(100, 100)
@@ -92,7 +66,7 @@ offset_left = -253.0
 offset_top = -110.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wgk16")
+theme_override_styles/panel = ExtResource("2_loabp")
 
 [node name="TimeDisplay" type="Label" parent="TimePane" unique_id=653208807]
 custom_minimum_size = Vector2(100, 80)
@@ -101,5 +75,44 @@ theme_type_variation = &"HeaderLarge"
 text = "Day: 0 | 00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=566555162]
+custom_minimum_size = Vector2(1340, 50)
+custom_maximum_size = Vector2(1340, 50)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1310.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_styles/panel = ExtResource("2_loabp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=534936142]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="RegolithIcon" type="TextureRect" parent="PanelContainer/HBoxContainer" unique_id=556474031]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_wswhu")
+expand_mode = 2
+
+[node name="RegolithLabel" type="Label" parent="PanelContainer/HBoxContainer" unique_id=1974616181]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"HeaderSmall"
+text = "9999.99 Kg"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HBoxContainer" unique_id=87065047]
+custom_minimum_size = Vector2(0, 30)
+custom_maximum_size = Vector2(-1, 30)
+propagate_maximum_size = true
+layout_mode = 2
+size_flags_vertical = 4
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
