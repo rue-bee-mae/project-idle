@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://baln1xnjmax4f"]
 
-[ext_resource type="Script" uid="uid://bchayjfmbyg1s" path="res://scenes/prototypes/clickers/prototype_clicker.gd" id="1_vo1as"]
-[ext_resource type="Texture2D" uid="uid://b4kcth4xxm2p5" path="res://sprites/regolith.png" id="2_hbx35"]
+[ext_resource type="Script" uid="uid://bchayjfmbyg1s" path="res://scripts/prototypes/incremental/prototype_incremental.gd" id="1_ni4m6"]
+[ext_resource type="Texture2D" uid="uid://b4kcth4xxm2p5" path="res://sprites/regolith.png" id="2_wswhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgk16"]
 content_margin_left = 15.0
@@ -20,15 +20,15 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 corner_detail = 5
 
-[node name="PrototypeClicker" type="Control" unique_id=2098043008 node_paths=PackedStringArray("moonRockLabel", "timer", "clock")]
+[node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithLabel", "timer", "clock")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vo1as")
-moonRockLabel = NodePath("MaterialsPane/MaterialsPanel/RegolithLabel")
+script = ExtResource("1_ni4m6")
+regolithLabel = NodePath("MaterialsPane/MaterialsPanel/RegolithLabel")
 timer = NodePath("Timer")
 clock = NodePath("TimePane/TimeDisplay")
 
@@ -53,7 +53,7 @@ columns = 2
 [node name="RegolithIcon" type="TextureRect" parent="MaterialsPane/MaterialsPanel" unique_id=556474031]
 layout_mode = 2
 size_flags_horizontal = 0
-texture = ExtResource("2_hbx35")
+texture = ExtResource("2_wswhu")
 expand_mode = 2
 
 [node name="RegolithLabel" type="Label" parent="MaterialsPane/MaterialsPanel" unique_id=1974616181]
