@@ -2,10 +2,15 @@ class_name PrototypeClicker
 extends Control
 ## A incremental game prototype to create a moon base.
 
+## Reference to the button for buying more regolith miners.
+@export var regolithMinerButton : TextureButton
+
 ## Reference to the label displaying the current amount of regolith.
 @export var regolithLabel : Label
 ## Reference to the label displaying the current regolith usage/gain.
 @export var regolithChangeLabel : Label
+## Reference to the label disaplying the number of regolith miners
+@export var regolithMinersLabel : Label
 ## Reference to the label displaying the current amount of ice.
 @export var iceLabel : Label
 ## Reference to the label displaying the current ice usage/gain.
@@ -48,12 +53,12 @@ func _ready() -> void:
 func extractors_tick() -> void:
 	regolith += extractorsReg * extractorSpeed
 	ice += extractorsIce * extractorSpeed
-	update_labels()
 
 ## Update the label to reflect new amount of regolith.
 func update_labels() -> void:
 	regolithLabel.text = "%.2f Kg" %regolith
 	iceLabel.text = "%.2f Kg" %ice
+	regolithMinersLabel.text = "%s" %extractorsReg
 	
 	# Check regolith usage
 	var regolithChange : float = calc_resource_change(extractorsReg, regolithUsage)
@@ -68,13 +73,21 @@ func update_labels() -> void:
 		iceChangeLabel.text = "-%.2f / hr" %(iceChange * 4)
 	else:
 		iceChangeLabel.text = "+%.2f / hr" %(iceChange * 4)
-		
+
+## Update the disabled/enabled status of buttons based on cost.d
+func update_button_status() -> void:
+	pass
+
 func calc_resource_change(extractorAmount : int, resourceUsage : float) -> float:
 	return extractorAmount * extractorSpeed - resourceUsage
 
 ## Update the time display to show the curreny day and time.
 func update_time_display() -> void:
 	clock.text = "Day: %d | %02d:%02d" %[clockDay, clockHrs, clockMin]
+
+## Buy new regolith miner
+func _on_reg_miner_buy_button_pressed() -> void:
+	extractorsReg += 1
 
 ## Update the clock based on the timer
 func _on_timer_timeout() -> void:
@@ -93,5 +106,7 @@ func _on_timer_timeout() -> void:
 	if clockHrs >= 24:
 		clockHrs = 0
 		clockDay += 1
-		
+	
+	update_labels()
+	update_button_status()
 	update_time_display()

@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://b8k2p2eqs576o"
+path="res://.godot/imported/button_buy_1_click_mask.png-1941c3a2da2647b3bf298a3c5625a38e.res"
+
+[deps]
+
+source_file="res://sprites/buttons/buy1/button_buy_1_click_mask.png"
+dest_files=["res://.godot/imported/button_buy_1_click_mask.png-1941c3a2da2647b3bf298a3c5625a38e.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

@@ -5,11 +5,18 @@
 [ext_resource type="StyleBox" uid="uid://ca88aar5e471j" path="res://styleboxes/resources_panel_style_box.tres" id="2_loabp"]
 [ext_resource type="Texture2D" uid="uid://b4kcth4xxm2p5" path="res://sprites/regolith.png" id="2_wswhu"]
 [ext_resource type="Theme" uid="uid://ctux0gd6eddel" path="res://themes/text/header_size.tres" id="3_aendf"]
+[ext_resource type="Texture2D" uid="uid://msqy4jboa1ia" path="res://sprites/miner-reg.png" id="4_us5x5"]
 [ext_resource type="Texture2D" uid="uid://cmqoxuvh3d4kw" path="res://sprites/ice.png" id="5_8egtp"]
+[ext_resource type="Theme" uid="uid://ct3yf4taicc4y" path="res://themes/text/machine_size.tres" id="5_jw83h"]
 [ext_resource type="Theme" uid="uid://bx7na088uag8p" path="res://themes/text/number_size.tres" id="6_xh8vb"]
+[ext_resource type="Texture2D" uid="uid://bihdr34ts6he5" path="res://sprites/buttons/buy1/button_buy_1_normal.png" id="7_6v3tc"]
 [ext_resource type="Theme" uid="uid://qjvjmm4k8s10" path="res://themes/text/number_small_size.tres" id="7_ivtub"]
+[ext_resource type="Texture2D" uid="uid://cixq4mnwg0dk3" path="res://sprites/buttons/buy1/button_buy_1_pressed.png" id="8_jnfgg"]
+[ext_resource type="Texture2D" uid="uid://bptf1rqub101p" path="res://sprites/buttons/buy1/button_buy_1_hover.png" id="9_4kg1y"]
+[ext_resource type="Texture2D" uid="uid://f45hotr5w81q" path="res://sprites/buttons/buy1/button_buy_1_disabled.png" id="10_plk82"]
+[ext_resource type="BitMap" uid="uid://b8k2p2eqs576o" path="res://sprites/buttons/buy1/button_buy_1_click_mask.png" id="11_jw83h"]
 
-[node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithLabel", "regolithChangeLabel", "iceLabel", "iceChangeLabel", "timer", "clock")]
+[node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithMinerButton", "regolithLabel", "regolithChangeLabel", "regolithMinersLabel", "iceLabel", "iceChangeLabel", "timer", "clock")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,8 +24,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ni4m6")
+regolithMinerButton = NodePath("MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner/RegMinerBuyButton")
 regolithLabel = NodePath("ResourcesPanel/ResourcesContainer/RegolithContainer/Regolith/RegolithLabel")
 regolithChangeLabel = NodePath("ResourcesPanel/ResourcesContainer/RegolithContainer/RegolithChangeLabel")
+regolithMinersLabel = NodePath("MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner/RegMiner/RegMinerCountLabel")
 iceLabel = NodePath("ResourcesPanel/ResourcesContainer/IceContainer/Ice/IceLabel")
 iceChangeLabel = NodePath("ResourcesPanel/ResourcesContainer/IceContainer/IceChangeLabel")
 timer = NodePath("Timer")
@@ -39,7 +48,6 @@ grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_8egtp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MachinesPanel" unique_id=1747169966]
-propagate_maximum_size = false
 layout_mode = 2
 
 [node name="MachinesLabel" type="Label" parent="MachinesPanel/VBoxContainer" unique_id=1354157396]
@@ -52,16 +60,61 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MachinesPanel/VBoxContainer" unique_id=315074103]
-custom_minimum_size = Vector2(240, 0)
+custom_minimum_size = Vector2(240, 10)
 custom_maximum_size = Vector2(240, -1)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="MachinesContainer" type="GridContainer" parent="MachinesPanel/VBoxContainer" unique_id=625507880]
-custom_minimum_size = Vector2(260, 0)
+[node name="MarginContainer" type="MarginContainer" parent="MachinesPanel/VBoxContainer" unique_id=1739857791]
 layout_mode = 2
-columns = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="MachinesContainer" type="VBoxContainer" parent="MachinesPanel/VBoxContainer/MarginContainer" unique_id=1371400163]
+layout_mode = 2
+
+[node name="RegolithMiner" type="VBoxContainer" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer" unique_id=1656762533]
+layout_mode = 2
+
+[node name="RegMiner" type="HBoxContainer" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner" unique_id=505867276]
+layout_mode = 2
+
+[node name="RegMinerIcon" type="TextureRect" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner/RegMiner" unique_id=1257382438]
+layout_mode = 2
+texture = ExtResource("4_us5x5")
+expand_mode = 2
+
+[node name="RegMinerLabel" type="Label" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner/RegMiner" unique_id=477890102]
+layout_mode = 2
+theme = ExtResource("5_jw83h")
+text = "REGOLITH MINERS"
+horizontal_alignment = 2
+
+[node name="RegMinerCountLabel" type="Label" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner/RegMiner" unique_id=1688295896]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+theme = ExtResource("6_xh8vb")
+text = "1"
+horizontal_alignment = 1
+
+[node name="RegMinerBuyButton" type="TextureButton" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner" unique_id=1521111741]
+custom_maximum_size = Vector2(-1, 32)
+layout_mode = 2
+action_mode = 0
+texture_normal = ExtResource("7_6v3tc")
+texture_pressed = ExtResource("8_jnfgg")
+texture_hover = ExtResource("9_4kg1y")
+texture_disabled = ExtResource("10_plk82")
+texture_click_mask = ExtResource("11_jw83h")
+stretch_mode = 5
+
+[node name="HSeparator2" type="HSeparator" parent="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer" unique_id=741681074]
+custom_minimum_size = Vector2(240, 10)
+custom_maximum_size = Vector2(240, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="TimePanel" type="PanelContainer" parent="." unique_id=752283839]
 custom_minimum_size = Vector2(100, 100)
@@ -182,3 +235,4 @@ layout_mode = 2
 size_flags_vertical = 4
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="MachinesPanel/VBoxContainer/MarginContainer/MachinesContainer/RegolithMiner/RegMinerBuyButton" to="." method="_on_reg_miner_buy_button_pressed"]
