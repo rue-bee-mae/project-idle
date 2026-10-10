@@ -4,7 +4,10 @@
 [ext_resource type="StyleBox" uid="uid://bhxwenlp7csdo" path="res://styleboxes/main_panel_style_box.tres" id="2_8egtp"]
 [ext_resource type="StyleBox" uid="uid://ca88aar5e471j" path="res://styleboxes/resources_panel_style_box.tres" id="2_loabp"]
 [ext_resource type="Texture2D" uid="uid://b4kcth4xxm2p5" path="res://sprites/regolith.png" id="2_wswhu"]
+[ext_resource type="Theme" uid="uid://ctux0gd6eddel" path="res://themes/text/header_size.tres" id="3_aendf"]
 [ext_resource type="Texture2D" uid="uid://cmqoxuvh3d4kw" path="res://sprites/ice.png" id="5_8egtp"]
+[ext_resource type="Theme" uid="uid://bx7na088uag8p" path="res://themes/text/number_size.tres" id="6_xh8vb"]
+[ext_resource type="Theme" uid="uid://qjvjmm4k8s10" path="res://themes/text/number_small_size.tres" id="7_ivtub"]
 
 [node name="PrototypeIncremental" type="Control" unique_id=2098043008 node_paths=PackedStringArray("regolithLabel", "regolithChangeLabel", "iceLabel", "iceChangeLabel", "timer", "clock")]
 layout_mode = 3
@@ -42,6 +45,7 @@ layout_mode = 2
 [node name="MachinesLabel" type="Label" parent="MachinesPanel/VBoxContainer" unique_id=1354157396]
 layout_mode = 2
 size_flags_vertical = 0
+theme = ExtResource("3_aendf")
 theme_type_variation = &"HeaderLarge"
 text = "MACHINES"
 horizontal_alignment = 1
@@ -76,7 +80,7 @@ theme_override_styles/panel = ExtResource("2_8egtp")
 [node name="TimeDisplay" type="Label" parent="TimePanel" unique_id=653208807]
 custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
+theme = ExtResource("3_aendf")
 text = "Day: 0 | 00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -119,6 +123,7 @@ custom_maximum_size = Vector2(147, -1)
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("6_xh8vb")
 theme_type_variation = &"HeaderSmall"
 text = "999999.99 Kg"
 horizontal_alignment = 1
@@ -126,7 +131,8 @@ vertical_alignment = 1
 
 [node name="RegolithChangeLabel" type="Label" parent="ResourcesPanel/ResourcesContainer/RegolithContainer" unique_id=1823307435]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+theme = ExtResource("7_ivtub")
+theme_override_colors/font_color = Color(0.54901963, 0.54901963, 0.54901963, 1)
 text = "+0 / hr"
 horizontal_alignment = 1
 
@@ -156,6 +162,7 @@ custom_maximum_size = Vector2(147, -1)
 propagate_maximum_size = true
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("6_xh8vb")
 theme_type_variation = &"HeaderSmall"
 text = "999999.99 Kg"
 horizontal_alignment = 1
@@ -163,6 +170,7 @@ vertical_alignment = 1
 
 [node name="IceChangeLabel" type="Label" parent="ResourcesPanel/ResourcesContainer/IceContainer" unique_id=1338439921]
 layout_mode = 2
+theme = ExtResource("7_ivtub")
 theme_override_colors/font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
 text = "+0 / hr"
 horizontal_alignment = 1

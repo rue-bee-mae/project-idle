@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://ctux0gd6eddel"]
+
+[ext_resource type="FontFile" uid="uid://doki5mqyuljlb" path="res://fonts/PixelifySans-VariableFont_wght.ttf" id="1_t48wo"]
+
+[resource]
+default_font = ExtResource("1_t48wo")
+default_font_size = 32
